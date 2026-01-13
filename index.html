@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>DJ Animateur & Photographe</title>
+  <title>Valtrack, Son & Lumière – DJ Animateur & Photographe</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       margin: 0;
@@ -11,46 +12,81 @@
       background: #0f172a;
       color: white;
     }
+
     header {
       padding: 60px 20px;
       text-align: center;
       background: linear-gradient(135deg, #6366f1, #22d3ee);
       color: #020617;
     }
+
+    /* Nouveau : le nom "Valtrack, Son & Lumière" */
+    .brand {
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      font-size: 36px;
+      margin: 0 0 10px;
+      text-transform: none;
+    }
+
+    /* Titre principal */
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-weight: 600;
+    }
+
     section {
       padding: 40px 20px;
       max-width: 1000px;
       margin: auto;
     }
-    h1, h2 {
-      margin-bottom: 10px;
+
+    h2 {
+      margin-bottom: 12px;
     }
+
     .services {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
+
     .card {
       background: #020617;
       border-radius: 12px;
       padding: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
     }
+
     footer {
       text-align: center;
       padding: 20px;
       color: #94a3b8;
       border-top: 1px solid #1e293b;
     }
+
     a {
       color: #22d3ee;
       text-decoration: none;
     }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>DJ Animateur & Photographe</h1>
+  <!-- AJOUT : Valtrack, Son & Lumière au-dessus -->
+  <div class="brand">Valtrack, Son &amp; Lumière</div>
+
+  <!-- Ton titre existant -->
+  <h1>DJ Animateur &amp; Photographe</h1>
   <p>Mariages • Anniversaires • Événements privés</p>
 </header>
 
@@ -58,13 +94,15 @@
   <h2>Mes prestations</h2>
   <div class="services">
     <div class="card">
-      <h3>🎧 DJ & Animation</h3>
+      <h3>🎧 DJ &amp; Animation</h3>
       <p>Ambiance sur mesure, playlist personnalisée, micro et animations.</p>
     </div>
+
     <div class="card">
       <h3>📸 Photographie</h3>
       <p>Reportage événementiel, photos naturelles et retouches professionnelles.</p>
     </div>
+
     <div class="card">
       <h3>✨ Packs DJ + Photo</h3>
       <p>Un seul prestataire pour une organisation simple et efficace.</p>
@@ -72,18 +110,19 @@
   </div>
 </section>
 
-<section>
+<section id="contact">
   <h2>Contact</h2>
   <p>
     📞 Téléphone : <strong>À compléter</strong><br>
     📍 Zone : <strong>À compléter</strong><br>
-    📷 Instagram : <a href="#">Lien Instagram</a>
+    📷 Instagram : <a href="#" target="_blank" rel="noreferrer">Lien Instagram</a>
   </p>
 </section>
 
 <footer>
-  © 2026 – DJ Animateur & Photographe
+  © 2026 – Valtrack, Son &amp; Lumière
 </footer>
 
 </body>
 </html>
+
