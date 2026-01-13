@@ -13,7 +13,7 @@
       color:white;
     }
 
-    /* ================= HERO / HEADER ================= */
+    /* ================= HEADER / HERO ================= */
     header{
       min-height:420px;
       padding:90px 20px;
@@ -22,15 +22,16 @@
       overflow:hidden;
       color:#eaf2ff;
 
-      /* 👉 PHOTO RÉELLE EN FOND */
+      /* 👉 IMAGE RÉELLE EN FOND */
       background:
         linear-gradient(135deg, rgba(8,12,25,.85), rgba(8,12,25,.35)),
-        url("images/hero.jpg");
+        url("image/hero.jpg");
       background-size:cover;
       background-position:center;
+      background-repeat:no-repeat;
     }
 
-    /* Effets de lumière colorés par-dessus la photo */
+    /* Effets de lumière colorés */
     header::before{
       content:"";
       position:absolute;
@@ -143,7 +144,7 @@
       <h3>🎧 DJ &amp; Animation</h3>
       <p>
         Ambiance sur mesure, playlist personnalisée,
-        gestion du micro, animations et moments clés.
+        micro, animations et gestion des temps forts.
       </p>
     </div>
 
