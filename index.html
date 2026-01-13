@@ -6,13 +6,7 @@
   <title>Valtrack, Son & Lumière – DJ Animateur & Photographe</title>
 
   <style>
-    :root{
-      --bg1: rgba(8,12,25,.92);
-      --bg2: rgba(8,12,25,.45);
-    }
-
-    *{ box-sizing: border-box; }
-
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
@@ -20,7 +14,6 @@
       color:white;
     }
 
-    /* ================= HERO ================= */
     header{
       min-height:560px;
       padding:90px 20px;
@@ -29,14 +22,13 @@
       overflow:hidden;
       color:#eaf2ff;
       background:
-        linear-gradient(135deg, var(--bg1), var(--bg2)),
+        linear-gradient(135deg, rgba(8,12,25,.92), rgba(8,12,25,.45)),
         url("images/hero.jpg");
       background-size:cover;
       background-position:center;
       background-repeat:no-repeat;
     }
 
-    /* léger glow global */
     header::before{
       content:"";
       position:absolute;
@@ -86,7 +78,7 @@
     .flash{
       position:absolute;
       inset:0;
-      z-index:4;
+      z-index:6;
       pointer-events:none;
       opacity:0;
       background:
@@ -102,16 +94,15 @@
       100%{opacity:0;}
     }
 
-    /* ================= LASERS (G + D) MOBILES ================= */
+    /* ================= LASERS ================= */
     .lasers{
       position:absolute;
       inset:0;
-      z-index:3;             /* au-dessus fumée/lyres */
+      z-index:4;
       pointer-events:none;
       mix-blend-mode: screen;
       filter: saturate(1.9) contrast(1.2);
     }
-
     .laser{
       position:absolute;
       top:-60px;
@@ -120,11 +111,9 @@
       transform-origin: top center;
       filter: blur(.6px);
       opacity:.95;
-      animation:
-        laserMove .55s ease-in-out infinite alternate,
-        laserFlicker .22s linear infinite;
+      animation: laserMove .55s ease-in-out infinite alternate,
+                 laserFlicker .22s linear infinite;
     }
-
     .laser::after{
       content:"";
       position:absolute;
@@ -139,7 +128,6 @@
       filter: blur(28px);
       opacity:.55;
     }
-
     .laser.left{
       left:-30px;
       --lr:0; --lg:255; --lb:140;
@@ -154,7 +142,6 @@
       box-shadow: 0 0 18px rgba(255,40,40,1), 0 0 55px rgba(255,40,40,.85);
       animation-delay: .12s, .05s;
     }
-
     @keyframes laserMove{
       0%   { transform: rotate(-42deg); }
       100% { transform: rotate(42deg); }
@@ -164,16 +151,15 @@
       100% { opacity:1; }
     }
 
-    /* ================= LYRES RGB (VRAIES COULEURS) ================= */
+    /* ================= LYRES RGB ================= */
     .beams{
       position:absolute;
       inset:-140px;
-      z-index:2;
+      z-index:3;
       pointer-events:none;
       mix-blend-mode: screen;
       filter: saturate(1.9) contrast(1.25);
     }
-
     .beam{
       position:absolute;
       top:-150px;
@@ -181,7 +167,6 @@
       height:1050px;
       transform-origin: top center;
     }
-
     .beam::before{
       content:"";
       position:absolute;
@@ -209,85 +194,78 @@
       filter: blur(22px);
     }
 
-    .b1{ left:10%; }
-    .b2{ left:30%; }
-    .b3{ left:50%; }
-    .b4{ left:70%; }
-
-    /* désynchro + RGB */
-    .b1{ animation: panA .85s ease-in-out infinite alternate, rgbA 2.2s linear infinite, pulse .45s linear infinite; }
-    .b2{ animation: panB 1.15s ease-in-out infinite alternate, rgbB 2.8s linear infinite, pulse .55s linear infinite; }
-    .b3{ animation: panC .95s ease-in-out infinite alternate,  rgbC 3.4s linear infinite, pulse .48s linear infinite; }
-    .b4{ animation: panD 1.35s ease-in-out infinite alternate, rgbD 4.0s linear infinite, pulse .60s linear infinite; }
+    .b1{ left:10%; animation: panA .85s ease-in-out infinite alternate, rgbA 2.2s linear infinite, pulse .45s linear infinite; }
+    .b2{ left:30%; animation: panB 1.15s ease-in-out infinite alternate, rgbB 2.8s linear infinite, pulse .55s linear infinite; }
+    .b3{ left:50%; animation: panC .95s ease-in-out infinite alternate, rgbC 3.4s linear infinite, pulse .48s linear infinite; }
+    .b4{ left:70%; animation: panD 1.35s ease-in-out infinite alternate, rgbD 4.0s linear infinite, pulse .60s linear infinite; }
 
     @keyframes panA{ 0%{transform:rotate(-30deg);}100%{transform:rotate(24deg);} }
     @keyframes panB{ 0%{transform:rotate(22deg);}100%{transform:rotate(-28deg);} }
     @keyframes panC{ 0%{transform:rotate(-18deg);}100%{transform:rotate(34deg);} }
     @keyframes panD{ 0%{transform:rotate(30deg);}100%{transform:rotate(-22deg);} }
 
-    /* RGB réels (variables) */
-    @keyframes rgbA{
-      0%{--r:255;--g:0;--b:0;}
-      33%{--r:0;--g:255;--b:0;}
-      66%{--r:0;--g:0;--b:255;}
-      100%{--r:255;--g:0;--b:0;}
-    }
-    @keyframes rgbB{
-      0%{--r:0;--g:255;--b:255;}
-      50%{--r:255;--g:0;--b:255;}
-      100%{--r:0;--g:255;--b:255;}
-    }
-    @keyframes rgbC{
-      0%{--r:255;--g:255;--b:0;}
-      50%{--r:0;--g:0;--b:255;}
-      100%{--r:255;--g:255;--b:0;}
-    }
-    @keyframes rgbD{
-      0%{--r:255;--g:0;--b:128;}
-      50%{--r:0;--g:255;--b:128;}
-      100%{--r:255;--g:0;--b:128;}
-    }
+    @keyframes rgbA{ 0%{--r:255;--g:0;--b:0;}33%{--r:0;--g:255;--b:0;}66%{--r:0;--g:0;--b:255;}100%{--r:255;--g:0;--b:0;} }
+    @keyframes rgbB{ 0%{--r:0;--g:255;--b:255;}50%{--r:255;--g:0;--b:255;}100%{--r:0;--g:255;--b:255;} }
+    @keyframes rgbC{ 0%{--r:255;--g:255;--b:0;}50%{--r:0;--g:0;--b:255;}100%{--r:255;--g:255;--b:0;} }
+    @keyframes rgbD{ 0%{--r:255;--g:0;--b:128;}50%{--r:0;--g:255;--b:128;}100%{--r:255;--g:0;--b:128;} }
 
-    @keyframes pulse{
-      0%,100%{ opacity:.7; }
-      50%{ opacity:1; }
-    }
+    @keyframes pulse{ 0%,100%{opacity:.7;}50%{opacity:1;} }
 
-    /* ================= DANSEURS (silhouettes SVG) ================= */
-    .dancers{
+    /* ================= FOULE QUI DANSE (MEILLEUR RENDU) ================= */
+    .crowd{
       position:absolute;
       left:0; right:0;
       bottom:-8px;
-      height:220px;
-      z-index:5; /* devant tout (sauf texte) */
+      height:260px;
+      z-index:5;
       pointer-events:none;
       display:flex;
+      align-items:flex-end;
       justify-content:center;
-      gap:26px;
-      opacity:.95;
+      gap:14px;
+      padding:0 18px;
+      opacity:.98;
+      filter: drop-shadow(0 22px 40px rgba(0,0,0,.55));
     }
 
-    .dancer{
-      width:110px;
+    /* silhouette base */
+    .person{
+      width:70px;
       height:220px;
-      filter: drop-shadow(0 16px 30px rgba(0,0,0,.55));
-      animation: dancerBounce 0.85s ease-in-out infinite alternate;
       transform-origin: 50% 100%;
+      animation: crowdBounce .9s ease-in-out infinite alternate;
+      position:relative;
+      background: none;
     }
 
-    .dancer:nth-child(2){ animation-duration:1.05s; transform: scale(.95); }
-    .dancer:nth-child(3){ animation-duration:0.72s; transform: scale(1.02); }
-    .dancer:nth-child(4){ animation-duration:1.22s; transform: scale(.92); }
+    /* contour RGB léger (reflet des lights) */
+    .person svg{
+      width:100%;
+      height:100%;
+      display:block;
+      filter:
+        drop-shadow(0 0 14px rgba(255,0,180,.10))
+        drop-shadow(0 0 18px rgba(0,220,255,.10))
+        drop-shadow(0 0 18px rgba(120,255,140,.08));
+    }
 
-    @keyframes dancerBounce{
-      0%{ transform: translateY(0) rotate(-1deg); }
-      100%{ transform: translateY(-14px) rotate(1deg); }
+    /* variations (désynchro) */
+    .person:nth-child(2){ animation-duration:1.05s; transform: scale(.95); }
+    .person:nth-child(3){ animation-duration:0.78s; transform: scale(1.02); }
+    .person:nth-child(4){ animation-duration:1.22s; transform: scale(.92); }
+    .person:nth-child(5){ animation-duration:0.82s; transform: scale(1.06); }
+    .person:nth-child(6){ animation-duration:1.12s; transform: scale(.90); }
+    .person:nth-child(7){ animation-duration:0.74s; transform: scale(1.00); }
+
+    @keyframes crowdBounce{
+      0%   { transform: translateY(0) rotate(-1deg); }
+      100% { transform: translateY(-16px) rotate(1deg); }
     }
 
     /* ================= TEXTE ================= */
     .heroBox{
       position:relative;
-      z-index:6;
+      z-index:7;
       display:inline-block;
       padding:30px 38px;
       border-radius:22px;
@@ -330,30 +308,57 @@
 
   <div class="flash" id="flashLayer"></div>
 
-  <!-- Danseurs (silhouettes) -->
-  <div class="dancers" aria-hidden="true">
-    <!-- Silhouette 1 -->
-    <svg class="dancer" viewBox="0 0 120 220">
-      <path fill="#000" d="M64 18a16 16 0 1 1-32 0 16 16 0 0 1 32 0ZM40 46c14-6 28 6 30 18l6 36c2 10-4 18-14 18h-4l6 46c1 10-5 18-15 18s-16-8-15-18l5-46h-3c-9 0-16-7-15-16l3-34c1-12 6-18 16-22Z"/>
-      <path fill="#000" d="M80 84c10 10 18 8 22 3l8 10c-8 10-20 12-34 0Z"/>
-    </svg>
+  <!-- FOULE (silhouettes différentes) -->
+  <div class="crowd" aria-hidden="true">
+    <!-- Chaque SVG est une silhouette différente (bras levés etc.) -->
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M60 26a18 18 0 1 1 0 36 18 18 0 0 1 0-36ZM18 98c8-22 22-34 42-34s34 12 42 34l-10 8-14-22-8 26 10 42c3 12-4 22-16 22s-19-10-16-22l10-42-8-26-14 22Z"/>
+        <path fill="#000" d="M16 92l22-30 10 8-22 30ZM104 92 82 62l-10 8 22 30Z"/>
+      </svg>
+    </div>
 
-    <!-- Silhouette 2 -->
-    <svg class="dancer" viewBox="0 0 120 220">
-      <path fill="#000" d="M70 20a15 15 0 1 1-30 0 15 15 0 0 1 30 0ZM46 50c12-8 30-3 34 14l10 42c2 8-3 15-11 15h-8l6 42c2 12-6 20-16 20s-16-8-15-20l4-42h-8c-8 0-13-6-12-14l6-40c2-12 6-15 10-17Z"/>
-      <path fill="#000" d="M18 98c20 6 34-8 40-18l10 8c-10 22-30 30-54 22Z"/>
-    </svg>
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M62 28a17 17 0 1 1-34 0 17 17 0 0 1 34 0ZM26 100c10-24 26-34 44-34s34 10 44 34l-8 10-18-22-8 28 12 46c3 12-4 22-16 22s-19-10-16-22l12-46-8-28-18 22Z"/>
+        <path fill="#000" d="M6 114c18-6 30-16 36-32l12 6c-10 26-28 40-52 44ZM114 114c-18-6-30-16-36-32l-12 6c10 26 28 40 52 44Z"/>
+      </svg>
+    </div>
 
-    <!-- Silhouette 3 -->
-    <svg class="dancer" viewBox="0 0 120 220">
-      <path fill="#000" d="M66 18a16 16 0 1 1-32 0 16 16 0 0 1 32 0ZM40 48c10-7 26-4 32 10l16 38c4 8 0 16-8 18l-6 2 10 40c3 12-4 22-15 22s-16-10-14-22l6-32-12-26-6 26-2 34c-1 10-7 18-16 18-10 0-16-8-15-18l2-38c1-14 6-26 18-32Z"/>
-    </svg>
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M58 26a18 18 0 1 1 0 36 18 18 0 0 1 0-36ZM22 104c8-20 22-32 40-32s32 12 40 32l-10 10-12-20-10 26 10 48c2 12-5 22-16 22s-17-10-15-22l10-48-10-26-12 20Z"/>
+        <path fill="#000" d="M20 86c0-18 10-28 24-34l6 12c-10 4-14 10-14 22ZM100 86c0-18-10-28-24-34l-6 12c10 4 14 10 14 22Z"/>
+      </svg>
+    </div>
 
-    <!-- Silhouette 4 -->
-    <svg class="dancer" viewBox="0 0 120 220">
-      <path fill="#000" d="M68 18a16 16 0 1 1-32 0 16 16 0 0 1 32 0ZM38 50c14-8 32 0 36 16l8 38c2 10-4 18-14 18h-6l6 42c2 12-5 20-15 20s-16-8-15-20l4-42h-6c-10 0-15-8-14-18l4-34c2-14 6-18 12-20Z"/>
-      <path fill="#000" d="M86 78c10 20 22 22 28 18l4 12c-10 8-28 4-40-20Z"/>
-    </svg>
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M60 28a17 17 0 1 1 0 34 17 17 0 0 1 0-34ZM24 106c10-26 26-36 36-36s26 10 36 36l-10 8-10-18-8 28 10 50c2 12-5 22-16 22s-18-10-16-22l10-50-8-28-10 18Z"/>
+        <path fill="#000" d="M14 130c22 0 34-12 40-26l12 6c-10 28-32 42-62 38ZM106 130c-22 0-34-12-40-26l-12 6c10 28 32 42 62 38Z"/>
+      </svg>
+    </div>
+
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M62 26a18 18 0 1 1-36 0 18 18 0 0 1 36 0ZM30 102c10-22 22-30 40-30s30 8 40 30l-10 10-14-18-8 24 12 52c3 12-4 22-16 22s-18-10-16-22l12-52-8-24-14 18Z"/>
+        <path fill="#000" d="M10 92 34 60l10 8-24 32ZM110 92 86 60l-10 8 24 32Z"/>
+      </svg>
+    </div>
+
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M60 28a17 17 0 1 1 0 34 17 17 0 0 1 0-34ZM22 108c8-22 22-34 38-34s30 12 38 34l-8 10-14-18-8 26 10 50c2 12-5 22-16 22s-17-10-15-22l10-50-8-26-14 18Z"/>
+        <path fill="#000" d="M8 122c20-4 34-14 40-30l12 6c-10 26-28 40-56 44ZM112 122c-20-4-34-14-40-30l-12 6c10 26 28 40 56 44Z"/>
+      </svg>
+    </div>
+
+    <div class="person">
+      <svg viewBox="0 0 120 260">
+        <path fill="#000" d="M58 26a18 18 0 1 1 0 36 18 18 0 0 1 0-36ZM20 104c8-22 22-34 40-34s32 12 40 34l-10 8-12-20-10 26 10 48c2 12-5 22-16 22s-17-10-15-22l10-48-10-26-12 20Z"/>
+        <path fill="#000" d="M44 64c-6-16-2-30 14-42l8 10c-10 8-12 16-8 30ZM76 64c6-16 2-30-14-42l-8 10c10 8 12 16 8 30Z"/>
+      </svg>
+    </div>
   </div>
 
   <div class="heroBox">
@@ -380,7 +385,7 @@
   (function loop(){
     setTimeout(()=>{
       triggerFlash();
-      if(Math.random() < 0.35) setTimeout(triggerFlash, 120); // double flash parfois
+      if(Math.random() < 0.35) setTimeout(triggerFlash, 120);
       loop();
     }, 1100 + Math.random()*1700);
   })();
