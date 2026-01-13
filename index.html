@@ -38,23 +38,23 @@ header{
   z-index:2;
 }
 @keyframes smoke{
-  from{transform:translateY(100px)}
-  to{transform:translateY(-200px)}
+  from{transform:translateY(80px)}
+  to{transform:translateY(-180px)}
 }
 
 /* ================= LYRES RGB ================= */
 .beams{
   position:absolute;
-  inset:-300px;
+  inset:-200px;
   pointer-events:none;
   z-index:3;
   mix-blend-mode:screen;
 }
 .beam{
   position:absolute;
-  width:500px;
-  height:1300px;
-  top:-200px;
+  width:420px;
+  height:800px;      /* ⬅️ RACCOURCI */
+  top:-120px;        /* ⬅️ MIEUX POSITIONNÉ */
   transform-origin:top center;
   animation:pulse .6s infinite;
 }
@@ -77,161 +77,4 @@ header{
 
 .b1{left:5%;animation:pan1 .8s alternate infinite,rgb1 2s linear infinite}
 .b2{left:30%;animation:pan2 1.1s alternate infinite,rgb2 3s linear infinite}
-.b3{left:55%;animation:pan3 .9s alternate infinite,rgb3 2.6s linear infinite}
-.b4{left:80%;animation:pan4 1.3s alternate infinite,rgb4 3.4s linear infinite}
-
-@keyframes pan1{from{transform:rotate(-35deg)}to{transform:rotate(25deg)}}
-@keyframes pan2{from{transform:rotate(30deg)}to{transform:rotate(-30deg)}}
-@keyframes pan3{from{transform:rotate(-20deg)}to{transform:rotate(35deg)}}
-@keyframes pan4{from{transform:rotate(40deg)}to{transform:rotate(-25deg)}}
-
-@keyframes rgb1{0%{--r:255;--g:0;--b:0}50%{--r:0;--g:255;--b:0}100%{--r:0;--g:0;--b:255}}
-@keyframes rgb2{0%{--r:0;--g:255;--b:255}50%{--r:255;--g:0;--b:255}100%{--r:0;--g:255;--b:255}}
-@keyframes rgb3{0%{--r:255;--g:255;--b:0}50%{--r:0;--g:0;--b:255}100%{--r:255;--g:255;--b:0}}
-@keyframes rgb4{0%{--r:255;--g:0;--b:180}50%{--r:0;--g:255;--b:180}100%{--r:255;--g:0;--b:180}}
-
-/* ================= LASERS ================= */
-.lasers{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:4;
-}
-.laser{
-  position:absolute;
-  top:-100px;
-  width:6px;
-  height:140%;
-  filter:blur(.5px);
-  transform-origin:top center;
-  animation:laser .5s alternate infinite;
-}
-.left{
-  left:-20px;
-  background:linear-gradient(to bottom,transparent,#00ff99,transparent);
-  box-shadow:0 0 20px #00ff99;
-}
-.right{
-  right:-20px;
-  background:linear-gradient(to bottom,transparent,#ff3333,transparent);
-  box-shadow:0 0 20px #ff3333;
-  animation-delay:.15s;
-}
-@keyframes laser{
-  from{transform:rotate(-40deg)}
-  to{transform:rotate(40deg)}
-}
-
-/* ================= FLASH PHOTO ================= */
-.flash{
-  position:absolute;
-  inset:0;
-  background:radial-gradient(circle at var(--x,50%) var(--y,40%),white,transparent 60%);
-  opacity:0;
-  z-index:6;
-  pointer-events:none;
-}
-.flash.active{animation:flash .18s ease-out}
-@keyframes flash{
-  0%{opacity:0}
-  30%{opacity:1}
-  100%{opacity:0}
-}
-
-/* ================= DJ ================= */
-.dj{
-  position:absolute;
-  left:50%;
-  bottom:20px; /* ⬅️ BIEN BAS */
-  transform:translateX(-50%);
-  z-index:7;
-  animation:djMove .9s ease-in-out infinite alternate;
-}
-.dj img{
-  width:420px;
-  max-width:90vw;
-  filter:
-    drop-shadow(0 0 25px rgba(0,255,255,.6))
-    drop-shadow(0 0 35px rgba(255,0,180,.4));
-}
-@keyframes djMove{
-  from{transform:translateX(-50%) translateY(0)}
-  to{transform:translateX(-50%) translateY(-10px)}
-}
-
-/* ================= TEXTE ================= */
-.heroBox{
-  position:relative;
-  z-index:8;
-  max-width:760px;
-  margin:90px auto 0;
-  padding:35px;
-  background:rgba(0,0,0,.55);
-  border-radius:22px;
-  border:1px solid rgba(255,255,255,.2);
-  backdrop-filter:blur(6px);
-  text-align:center;
-}
-.heroBox h1{margin:0;font-size:38px}
-.heroBox h2{margin:10px 0;font-size:24px}
-.heroBox p{margin-top:10px;font-weight:bold}
-
-/* ================= FOOTER ================= */
-footer{
-  position:absolute;
-  bottom:0;
-  width:100%;
-  text-align:center;
-  padding:15px;
-  color:#9ca3af;
-  z-index:9;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="smoke"></div>
-
-  <div class="beams">
-    <div class="beam b1"></div>
-    <div class="beam b2"></div>
-    <div class="beam b3"></div>
-    <div class="beam b4"></div>
-  </div>
-
-  <div class="lasers">
-    <div class="laser left"></div>
-    <div class="laser right"></div>
-  </div>
-
-  <div class="flash" id="flash"></div>
-
-  <div class="dj">
-    <img src="images/dj.png" alt="DJ">
-  </div>
-
-  <div class="heroBox">
-    <h1>Valtrack, Son & Lumière</h1>
-    <h2>DJ Animateur & Photographe</h2>
-    <p>Mariages • Anniversaires • Événements privés</p>
-  </div>
-
-  <footer>© 2026 – Valtrack, Son & Lumière</footer>
-</header>
-
-<script>
-const flash=document.getElementById("flash");
-function popFlash(){
-  flash.style.setProperty("--x",Math.random()*80+"%");
-  flash.style.setProperty("--y",Math.random()*50+"%");
-  flash.classList.remove("active");
-  void flash.offsetWidth;
-  flash.classList.add("active");
-}
-setInterval(()=>{if(Math.random()<.6)popFlash()},1200);
-</script>
-
-</body>
-</html>
+.b3{left:55%;animation:pan3 .9s alternate inf
