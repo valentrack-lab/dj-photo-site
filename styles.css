@@ -84,36 +84,43 @@ a{color:inherit; text-decoration:none}
   border-bottom: 1px solid var(--line);
 }
 
-/* ✅ background image is behind everything and never overlays content */
+/* LAYER 1: blurred cover background */
 .hero__bg{
   position:absolute;
   inset:0;
+  z-index:0;
 
-  /* Base fill */
-  background-color: var(--bg);
-
-  /* Two-layer background:
-     - first: dark overlay for readability
-     - second: the image itself
-  */
-  background-image:
+  background:
     linear-gradient(to bottom, rgba(11,15,25,.55), rgba(11,15,25,.92)),
-    url("dj.png");
+    url("dj.png") no-repeat center;
 
-  background-repeat: no-repeat, no-repeat;
-  background-position: center, center 35%;
-
-  /* Keep it immersive on desktop */
-  background-size: cover, cover;
-
-  transform: scale(1.02);
+  background-size: cover;
+  filter: blur(14px) saturate(1.05);
+  transform: scale(1.08);
+  opacity: 0.85;
 }
 
-/* ✅ keep text above background */
+/* LAYER 2: the SAME image, but ENTIRE and centered, behind text */
 .hero__content{
   position:relative;
-  z-index: 1;
+  z-index:1;
   padding: 70px 0;
+}
+
+/* This draws the full image WITHOUT cropping, but it stays behind the text */
+.hero__content::before{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  z-index:-1;
+
+  background:
+    linear-gradient(to bottom, rgba(11,15,25,.25), rgba(11,15,25,.70)),
+    url("dj.png") no-repeat center 35%;
+
+  background-size: contain;
+  opacity: 0.95;
+  pointer-events: none;
 }
 
 .pill{
@@ -131,6 +138,7 @@ h1{
   line-height: 1.05;
   margin: 0 0 14px;
 }
+
 .lead{
   max-width: 60ch;
   color: var(--muted);
@@ -169,6 +177,7 @@ h1{
   gap: 14px;
 }
 .grid--2{grid-template-columns: repeat(2, minmax(0,1fr))}
+
 .card{
   position:relative;
   border: 1px solid rgba(255,255,255,.12);
@@ -277,7 +286,6 @@ h1{
   color: rgba(255,255,255,.75);
 }
 
-/* ✅ Mobile adjustments: keep the face visible and reduce crop */
 @media (max-width: 920px){
   .grid{grid-template-columns: 1fr}
   .grid--2{grid-template-columns: 1fr}
@@ -286,7 +294,9 @@ h1{
   .menu{display:none}
   .burger{display:block}
 
-  .hero__bg{
-    background-position: center, center 20%;
+  /* mobile: keep it visible and not too big */
+  .hero__content::before{
+    inset:-10px;
+    background-position: center 28%;
   }
 }
