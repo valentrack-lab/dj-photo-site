@@ -1,80 +1,305 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valtrack, Son & Lumière</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DJ & Photographe — Votre Nom</title>
+  <meta name="description" content="DJ & animation + photographie événementielle. Ambiances sur mesure, photos naturelles, pack DJ + photographe. Devis et rendez-vous en ligne." />
+  <meta name="theme-color" content="#0b0f19" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-<style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Arial,Helvetica,sans-serif;
-  background:#0b1220;
-  color:#fff;
-  overflow-x:hidden;
-}
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="Accueil">
+        <span class="brand__dot"></span>
+        <span>Votre Nom</span>
+      </a>
+      <nav class="menu">
+        <a href="#prestations">Prestations</a>
+        <a href="#materiel">Matériel</a>
+        <a href="#methode">Méthode</a>
+        <a href="#contact" class="btn btn--sm">Contact</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-/* ================= HERO ================= */
-header{
-  position:relative;
-  height:100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.7)),
-    url("images/hero.jpg") center/cover no-repeat;
-  overflow:hidden;
-}
+    <div class="mobile" id="mobileMenu">
+      <a href="#prestations">Prestations</a>
+      <a href="#materiel">Matériel</a>
+      <a href="#methode">Méthode</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
 
-/* ================= FUMÉE ================= */
-.smoke{
-  position:absolute;
-  inset:-40%;
-  background:
-    radial-gradient(circle at 30% 80%,rgba(255,255,255,.25),transparent 60%),
-    radial-gradient(circle at 70% 85%,rgba(255,255,255,.2),transparent 60%);
-  filter:blur(50px);
-  animation:smoke 25s linear infinite;
-  pointer-events:none;
-  z-index:2;
-}
-@keyframes smoke{
-  from{transform:translateY(80px)}
-  to{transform:translateY(-180px)}
-}
+  <!-- HERO -->
+  <main id="top">
+    <section class="hero">
+      <div class="hero__bg" role="img" aria-label="Ambiance soirée DJ"></div>
+      <div class="container hero__content">
+        <p class="pill">DJ • Animation • Photographie événementielle</p>
+        <h1>Une ambiance sur mesure. Des souvenirs naturels.</h1>
+        <p class="lead">
+          Mariages, anniversaires, baptêmes, soirées privées & pro.
+          Playlist personnalisée, micro/animations, et reportage photo authentique.
+        </p>
 
-/* ================= LYRES RGB ================= */
-.beams{
-  position:absolute;
-  inset:-200px;
-  pointer-events:none;
-  z-index:3;
-  mix-blend-mode:screen;
-}
-.beam{
-  position:absolute;
-  width:420px;
-  height:800px;      /* ⬅️ RACCOURCI */
-  top:-120px;        /* ⬅️ MIEUX POSITIONNÉ */
-  transform-origin:top center;
-  animation:pulse .6s infinite;
-}
-.beam::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  clip-path:polygon(50% 0%,0% 100%,100% 100%);
-  background:linear-gradient(
-    to bottom,
-    rgba(var(--r),var(--g),var(--b),0),
-    rgba(var(--r),var(--g),var(--b),.9),
-    rgba(var(--r),var(--g),var(--b),0)
-  );
-}
-@keyframes pulse{
-  0%,100%{opacity:.6}
-  50%{opacity:1}
-}
+        <div class="hero__cta">
+          <a class="btn" href="#contact">Demander un devis</a>
+          <a class="btn btn--ghost" href="#prestations">Voir les prestations</a>
+        </div>
 
-.b1{left:5%;animation:pan1 .8s alternate infinite,rgb1 2s linear infinite}
-.b2{left:30%;animation:pan2 1.1s alternate infinite,rgb2 3s linear infinite}
-.b3{left:55%;animation:pan3 .9s alternate inf
+        <div class="stats">
+          <div class="stat">
+            <span class="stat__n">DJ & Animation</span>
+            <span class="stat__t">Ambiance adaptée au public</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">Photo naturelle</span>
+            <span class="stat__t">Moments vrais, sans sur-retouche</span>
+          </div>
+          <div class="stat">
+            <span class="stat__n">Pack DJ + Photo</span>
+            <span class="stat__t">Un seul prestataire, simple</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESTATIONS -->
+    <section class="section" id="prestations">
+      <div class="container">
+        <div class="section__head">
+          <h2>Prestations</h2>
+          <p>Trois offres claires : DJ & animation, photographie, ou pack complet.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card__icon">🎧</div>
+            <h3>DJ & Animation</h3>
+            <ul class="list">
+              <li>Ambiance sur mesure selon votre événement</li>
+              <li>Playlist personnalisée (échanges avant)</li>
+              <li>Micro : annonces, discours, temps forts</li>
+              <li>Animations possibles (blind test, jeux, etc.)</li>
+              <li>Sonorisation adaptée à la salle</li>
+            </ul>
+            <div class="card__actions">
+              <a class="link" href="#contact">Demander un devis →</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card__icon">📷</div>
+            <h3>Photographie</h3>
+            <ul class="list">
+              <li>Reportage événementiel : prises sur le vif</li>
+              <li>Tri soigné + livraison des photos</li>
+              <li>Retouches légères possibles (si besoin)</li>
+              <li>Priorité au naturel : rendu authentique</li>
+              <li>Livraison sur clé USB (sans galerie en ligne)</li>
+            </ul>
+            <div class="card__actions">
+              <a class="link" href="#contact">Réserver un appel →</a>
+            </div>
+          </article>
+
+          <article class="card card--featured">
+            <div class="badge">Le plus demandé</div>
+            <div class="card__icon">✨</div>
+            <h3>Pack DJ + Photographe</h3>
+            <ul class="list">
+              <li>Organisation simplifiée : un seul prestataire</li>
+              <li>Meilleure coordination des moments clés</li>
+              <li>Ambiance + souvenirs cohérents</li>
+              <li>Idéal mariages / anniversaires / baptêmes</li>
+              <li>Options possibles : lumière, animations, etc.</li>
+            </ul>
+            <div class="card__actions">
+              <a class="btn btn--sm" href="#contact">Obtenir un devis</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="note">
+          <strong>Livraison des photos :</strong> remise sur clé USB après l’événement.
+          Aucun stockage en ligne n’est effectué.
+        </div>
+      </div>
+    </section>
+
+    <!-- MATERIEL -->
+    <section class="section" id="materiel">
+      <div class="container">
+        <div class="section__head">
+          <h2>Matériel</h2>
+          <p>Une installation fiable, adaptée à votre salle et à votre public.</p>
+        </div>
+
+        <div class="grid grid--2">
+          <article class="panel">
+            <h3>Son & micro</h3>
+            <ul class="list">
+              <li>Enceintes : (ex. 2× …)</li>
+              <li>Caisson : (si oui)</li>
+              <li>Micro sans fil : discours clairs</li>
+              <li>Mixage & réglages : équilibre voix/musique</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>DJ & lumière</h3>
+            <ul class="list">
+              <li>Contrôleur DJ : (modèle)</li>
+              <li>Ordinateur + logiciel : (logiciel)</li>
+              <li>Lumières : (barres LED / lyres / etc.)</li>
+              <li>Installation propre & câblage sécurisé</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Photo</h3>
+            <ul class="list">
+              <li>Boîtier : (modèle)</li>
+              <li>Objectifs : (ex. 35mm / 50mm / zoom)</li>
+              <li>Flash : (si oui)</li>
+              <li>Rendu naturel + tri soigné</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Options</h3>
+            <ul class="list">
+              <li>Playlist “interdits / indispensables”</li>
+              <li>Animation soft ou plus dynamique</li>
+              <li>Ambiance lumineuse selon thème</li>
+              <li>Devis adapté au lieu + durée</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODE -->
+    <section class="section" id="methode">
+      <div class="container">
+        <div class="section__head">
+          <h2>Ma méthode</h2>
+          <p>Simple, fluide, et sans stress : on prépare bien, puis on profite.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step__n">1</span>
+            <div>
+              <h3>Prise de contact</h3>
+              <p>Vous m’expliquez l’événement, la date, le lieu et l’ambiance souhaitée.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step__n">2</span>
+            <div>
+              <h3>Questionnaire</h3>
+              <p>Styles musicaux, moments clés, infos pratiques : je m’organise au mieux.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step__n">3</span>
+            <div>
+              <h3>Préparation</h3>
+              <p>Playlist personnalisée, déroulé, matériel adapté à la salle.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step__n">4</span>
+            <div>
+              <h3>Jour J</h3>
+              <p>Je gère l’ambiance, le micro, et les moments forts selon votre rythme.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="step__n">5</span>
+            <div>
+              <h3>Livraison</h3>
+              <p>Photos remises sur clé USB + possibilité d’un questionnaire de satisfaction.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact">
+          <div class="contact__left">
+            <h2>Contact</h2>
+            <p>Dis-moi la date, le lieu, et le type d’événement : je te réponds rapidement.</p>
+
+            <div class="contact__cards">
+              <div class="mini">
+                <h3>Devis</h3>
+                <p>Formulaire rapide pour estimer la prestation.</p>
+                <a class="btn btn--sm" href="VOTRE_LIEN_GOOGLE_FORMS_DEVIS" target="_blank" rel="noopener">Ouvrir le formulaire</a>
+              </div>
+
+              <div class="mini">
+                <h3>Rendez-vous</h3>
+                <p>Pour un appel / visio (lien de réservation si tu en as un).</p>
+                <a class="btn btn--sm btn--ghost" href="VOTRE_LIEN_DE_RESERVATION" target="_blank" rel="noopener">Réserver un créneau</a>
+              </div>
+            </div>
+
+            <div class="contact__info">
+              <a class="link" href="tel:+33XXXXXXXXX">📞 +33 X XX XX XX XX</a><br/>
+              <a class="link" href="mailto:contact@votredomaine.fr">✉️ contact@votredomaine.fr</a><br/>
+              <span class="muted">📍 Zone : (ex. Île-de-France / …)</span>
+            </div>
+
+            <div class="social">
+              <a class="chip" href="VOTRE_LIEN_INSTAGRAM" target="_blank" rel="noopener">Instagram</a>
+              <a class="chip" href="VOTRE_LIEN_TIKTOK" target="_blank" rel="noopener">TikTok</a>
+              <a class="chip" href="VOTRE_LIEN_FACEBOOK" target="_blank" rel="noopener">Facebook</a>
+            </div>
+
+            <p class="tiny muted">
+              Photos livrées sur clé USB • Pas de galerie en ligne • Aucun stockage client sur le site
+            </p>
+          </div>
+
+          <div class="contact__right">
+            <div class="quote">
+              <h3>Exemples d’événements</h3>
+              <ul class="list">
+                <li>Mariages</li>
+                <li>Anniversaires</li>
+                <li>Baptêmes</li>
+                <li>Soirées privées / entreprises</li>
+              </ul>
+              <div class="divider"></div>
+              <h3>Tu veux une ambiance précise ?</h3>
+              <p class="muted">Afro • Reggaeton • 80/90/2000 • Pop • Rap • Électro… on adapte à vos goûts.</p>
+            </div>
+          </div>
+        </div>
+
+        <footer class="footer">
+          <span>© <span id="year"></span> Votre Nom — DJ & Photographe</span>
+          <span class="muted">Mentions légales • Confidentialité</span>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
