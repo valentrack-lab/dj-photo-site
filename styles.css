@@ -12,6 +12,7 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -21,6 +22,7 @@ body{
     var(--bg);
   color: var(--text);
 }
+
 a{color:inherit; text-decoration:none}
 .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto}
 
@@ -41,6 +43,7 @@ a{color:inherit; text-decoration:none}
   background: linear-gradient(135deg, rgba(0,220,200,1), rgba(120,120,255,1));
   box-shadow: 0 0 0 6px rgba(255,255,255,.04);
 }
+
 .menu{display:flex; gap:18px; align-items:center}
 .menu a{opacity:.9}
 .menu a:hover{opacity:1}
@@ -76,42 +79,64 @@ a{color:inherit; text-decoration:none}
 
 /* HERO */
 .hero{
-  position: relative;
+  position:relative;
   min-height: 72vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
   border-bottom: 1px solid var(--line);
 }
 
+/* Layer 1: blurred fill background (full width) */
 .hero__bg{
-  position: absolute;
-  inset: 0;
+  position:absolute;
+  inset:0;
+  z-index:0;
 
   background:
-    linear-gradient(to bottom, rgba(11,15,25,.45), rgba(11,15,25,.90)),
+    linear-gradient(to bottom, rgba(11,15,25,.55), rgba(11,15,25,.92)),
     url("dj.png") no-repeat center;
 
-  background-size: contain;   /* 🔥 IMAGE ENTIÈRE */
-  background-color: #0b0f19;  /* fond derrière */
+  background-size: cover;
+  filter: blur(16px) saturate(1.1);
+  transform: scale(1.10);
+  opacity: .85;
 }
 
-
-/* LAYER 2: the SAME image, but ENTIRE and centered, behind text */
+/* Content is above everything */
 .hero__content{
   position:relative;
   z-index:1;
   padding: 70px 0;
 }
 
-/* This draws the full image WITHOUT cropping, but it stays behind the text */
-.hero__content{
-  position: relative;
-  z-index: 1;
-  padding: 70px 0;
+/* Layer 2: the "full image", kept inside a wide rectangle behind text */
+.hero__content::before{
+  content:"";
+  position:absolute;
+
+  /* This creates a wide rectangle behind your text */
+  left: -60px;
+  right: -60px;
+  top: -40px;
+  bottom: -40px;
+
+  z-index:-1;
+  pointer-events:none;
+
+  background:
+    linear-gradient(to bottom, rgba(11,15,25,.25), rgba(11,15,25,.70)),
+    url("dj.png") no-repeat center 35%;
+
+  /* ✅ show the image fully */
+  background-size: contain;
+
+  /* ✅ avoid the “square poster” feeling */
+  background-color: rgba(11,15,25,.10);
+  border-radius: 28px;
 }
 
-
+/* Hero text */
 .pill{
   display:inline-flex; align-items:center;
   padding: 8px 12px;
@@ -137,6 +162,7 @@ h1{
 }
 .hero__cta{display:flex; gap:12px; flex-wrap:wrap}
 
+/* Stats */
 .stats{
   margin-top: 28px;
   display:grid;
@@ -283,9 +309,12 @@ h1{
   .menu{display:none}
   .burger{display:block}
 
-  /* mobile: keep it visible and not too big */
+  /* On mobile, reduce the full-image rectangle */
   .hero__content::before{
-    inset:-10px;
-    background-position: center 28%;
+    left: -16px;
+    right: -16px;
+    top: -10px;
+    bottom: -10px;
+    background-position: center 25%;
   }
 }
