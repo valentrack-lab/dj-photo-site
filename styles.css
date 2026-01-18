@@ -360,3 +360,19 @@ h1{
   font-size: .9rem;
 }
 
+.contact__right{
+  display:flex;
+  flex-direction:column;
+  gap: 14px;
+}
+
+.right-block{
+  padding: 6px 2px;           /* pas de cadre, juste de l’air */
+}
+
+.review-card{
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  border-radius: 18px;
+  padding: 14px;
+}
